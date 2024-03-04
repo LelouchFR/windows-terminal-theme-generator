@@ -1,0 +1,66 @@
+{
+    "en": {
+        "random": "Randomize",
+        "previous": "Previous",
+        "next": "Next",
+        "modes": "Dark/Light mode",
+        "copy": "Copy Json",
+        "share": "Share Theme"
+    },
+    "fr": {
+        "random": "Randomiser",
+        "previous": "Précédent",
+        "next": "Prochain",
+        "modes": "Theme Sombre/Clair",
+        "copy": "Copier Theme",
+        "share": "Partager Theme"
+    },
+    "de": {
+        "random": "Randomisieren",
+        "previous": "Vorherig",
+        "next": "Nächstes",
+        "modes": "Dunkel/Hell Theme",
+        "copy": "Json Kopieren",
+        "share": "Theme teilen"
+    },
+    "sp": {
+        "random": "Aleatorizar",
+        "previous": "Anterior",
+        "next": "Próxima",
+        "modes": "Oscuro/Claro Tema",
+        "copy": "Copiar Json",
+        "share": "Coparte Tema"
+    },
+    "hi": {
+        "random": "अनियमित",
+        "previous": "पहले का",
+        "next": "अगला",
+        "modes": "डार्क/लाइट थीम",
+        "copy": "Json कॉपी करें",
+        "share": "थीम साझा करें"
+    },
+    "kr": {
+        "random": "무작위화",
+        "previous": "이전",
+        "next": "다음",
+        "modes": "다크/라이트 테마",
+        "copy": "Json 복사",
+        "share": "테마 공유"
+    },
+    "jp": {
+        "random": "ランダマイズ",
+        "previous": "前",
+        "next": "次のページ",
+        "modes": "ダーク/ライトモード",
+        "copy": "コピーJson",
+        "share": "シェアテーマ"
+    },
+    "ru": {
+        "random": "рандомизировать",
+        "previous": "предыдущий",
+        "next": "следующий",
+        "modes": "Темная/светлая тема",
+        "copy": "Копирование Json",
+        "share": "Поделиться темой"
+    }
+}

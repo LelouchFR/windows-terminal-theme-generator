@@ -1,0 +1,41 @@
+$gen-names: "background", "black", "blue", "bright-black", "bright-blue", "bright-cyan", "bright-green", "bright-purple", "bright-red", "bright-white", "bright-yellow", "cursor-color", "cyan", "foreground", "green", "purple", "red", "selection-background", "white", "yellow";
+
+:root {
+    $gen-theme-values: #282A36, #21222C, #BD93F9, #6272A4, #D6ACFF, #A4FFFF, #69FF94, #FF92DF, #FF6E6E, #FFFFFF, #FFFFA5, #F8F8F2, #8BE9FD, #F8F8F2, #50FA7B, #FF79C6, #FF5555, #44475A, #F8F8F2, #F1FA8C;
+    @each $name, $value in zip($gen-names, $gen-theme-values) {
+        --#{$name}: #{$value};
+    }
+}
+
+$background: var(--background);
+$black: var(--black);
+$blue: var(--blue);
+$bright-black: var(--bright-black);
+$bright-blue: var(--bright-blue);
+$bright-cyan: var(--bright-cyan);
+$bright-green: var(--bright-green);
+$bright-purple: var(--bright-purple);
+$bright-red: var(--bright-red);
+$bright-white: var(--bright-white);
+$bright-yellow: var(--bright-yellow);
+$cursor-color: var(--cursor-color);
+$cyan: var(--cyan);
+$foreground: var(--foreground);
+$green: var(--green);
+$purple: var(--purple);
+$red: var(--red);
+$selection-background: var(--selection-background);
+$white: var(--white);
+$yellow: var(--yellow);
+
+$gen-values: $background, $black, $blue, $bright-black, $bright-blue, $bright-cyan, $bright-green, $bright-purple, $bright-red, $bright-white, $bright-yellow, $cursor-color, $cyan, $foreground, $green, $purple, $red, $selection-background, $white, $yellow;
+
+@each $name, $value in zip($gen-names, $gen-values) {
+    .#{$name} {
+        color: $value;
+
+        &--as-background {
+            background: $value;
+        }
+    }
+}

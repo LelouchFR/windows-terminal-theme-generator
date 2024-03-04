@@ -1,0 +1,106 @@
+{
+    "en": {
+        "buttonText": "Start generating!",
+        "QA": [
+            {
+                "question": "What's the purpose of this website ?",
+                "answer": "The purpose of this website is to provide users with a convenient and user-friendly tool for customizing the appearance of their Windows Terminal. It allows users to adjust various visual aspects such as colors and cursor styles, and then download the customized theme file for immediate use in their Windows Terminal setup. Ultimately, the goal is to empower users to personalize their command-line experience and their preferences and style."
+            },
+            {
+                "question": "Can users save or export their customized themes?",
+                "answer": "Yes, once users are satisfied with their customized theme, they can easily export it as a theme file compatible with Windows Terminal. The website provides a copy Json button that allows users to save their theme file directly to their computer for immediate use."
+            }
+        ]
+    },
+    "fr": {
+        "buttonText": "Commence à générer!",
+        "QA": [
+            {
+                "question": "Quelle est le but du site web?",
+                "answer": "Le but du site web est de fournir un outil agréable pour l'utilisateur pour customiser apparence de son Windows Terminal. Cela permet à l'utilisateur d'ajuster plusieurs aspects visuel comme la couleur et le style de leur interface de leur setup pour leur terminal."
+            },
+            {
+                "question": "Est-ce que les utilisateurs peuvent sauvegarder ou exporter leur theme customiser?",
+                "answer": "Oui, après que l'utilisateur est satisfait avec son theme, ils peuvent simplement exporter leur theme qui est compatible avec toutes les version de Windows Terminal. Le site a un boutton pour copier le Json pour que l'utilisateur n'as plus qu'à le colé dans sont fichier de config de Windows Terminal."
+            }
+        ]
+    },
+    "de": {
+        "buttonText": "Fange an zu erstellen!",
+        "QA": [
+            {
+                "question": "Was ist das Zweck von der Website ?",
+                "answer": "Der Zweck der Website ist der Benutzer ein konformtabels und benutzerfreundliches Instrument zu bieten für das visueles aspect von seinen Windows Terminal."
+            },
+            {
+                "question": "Kann Benutzer deren individuelles angepasstes thema laden order exportieren ?",
+                "answer": "Ja, wenn der Benutzer zufrieden ist mit deren Theme, sie können es einfach exportieren. Der Theme ist compatible mit allen verionen von Windows Terminal, damit es für allen direct functioniert."
+            }
+        ]
+    },
+    "sp": {
+        "buttonText": "¡Comienza a generar!",
+        "QA": [
+            {
+                "question": "¿Cuál es el propósito de este sitio web?",
+                "answer": "El propósito de este sitio web es proporcionar a los usuarios una herramienta conveniente y fácil de usar para personalizar la apariencia de su Terminal de Windows. Permite a los usuarios ajustar varios aspectos visuales como colores y estilos de cursor, y luego descargar el archivo de tema personalizado para usarlo inmediatamente en su configuración de Terminal de Windows. En última instancia, el objetivo es capacitar a los usuarios para personalizar su experiencia en la línea de comandos y sus preferencias y estilo."
+            },
+            {
+                "question": "¿Los usuarios pueden guardar o exportar sus temas personalizados?",
+                "answer": "Sí, una vez que los usuarios estén satisfechos con su tema personalizado, pueden exportarlo fácilmente como un archivo de tema compatible con Terminal de Windows. El sitio web proporciona un botón para copiar Json que permite a los usuarios guardar su archivo de tema directamente en su computadora para su uso inmediato."
+            }
+        ]
+    },
+    "hi": {
+        "buttonText": "उत्पन्न करना शुरू करें!",
+        "QA": [
+            {
+                "question": "इस वेबसाइट का उद्देश्य क्या है?",
+                "answer": "इस वेबसाइट का उद्देश्य उपयोगकर्ताओं को उनके Windows टर्मिनल की उपस्थिति को कस्टमाइज़ करने के लिए एक सुविधाजनक और उपयोगकर्ता सहायक उपकरण प्रदान करना है। यह उपयोगकर्ताओं को विभिन्न दृश्य संबंधी पहलुओं जैसे रंग और कर्सर स्टाइल को समायोजित करने की अनुमति देता है, और फिर उनके Windows टर्मिनल सेटअप में तुरंत उपयोग के लिए अपना कस्टमाइज़ किया गया थीम फ़ाइल डाउनलोड करने की अनुमति देता है। आखिरकार, लक्ष्य यह है कि उपयोगकर्ता अपने कमांड-लाइन अनुभव को और अपनी पसंद और शैली को व्यक्त करें।"
+            },
+            {
+                "question": "क्या उपयोगकर्ता अपने कस्टमाइज़ किए गए थीम्स को सहेज सकते हैं या निर्यात कर सकते हैं?",
+                "answer": "हाँ, जब उपयोगकर्ता अपने कस्टमाइज़ किए गए थीम के संतुष्ट होते हैं, तो वे इसे आसानी से एक थीम फ़ाइल के रूप में निर्यात कर सकते हैं जो विंडोज टर्मिनल के संगत है। वेबसाइट उपयोगकर्ताओं को उनकी थीम फ़ाइल को सीधे अपने कंप्यूटर में सहेजने की अनुमति देने वाला एक कॉपी Json बटन प्रदान करता है।"
+            }
+        ]
+    },
+    "kr": {
+        "buttonText": "생성 시작!",
+        "QA": [
+            {
+                "question": "이 웹 사이트의 목적은 무엇입니까?",
+                "answer": "이 웹 사이트의 목적은 사용자에게 Windows 터미널의 외관을 사용자 정의하는 편리하고 사용자 친화적인 도구를 제공하는 것입니다. 사용자들은 색상 및 커서 스타일과 같은 다양한 시각적 측면을 조정할 수 있으며, 그런 다음 사용자의 Windows 터미널 설정에서 즉시 사용할 사용자 지정 테마 파일을 다운로드할 수 있습니다. 궁극적으로 목표는 사용자가 명령 줄 경험과 선호도 및 스타일을 개인화할 수 있도록 하는 것입니다."
+            },
+            {
+                "question": "사용자는 자신의 사용자 정의 테마를 저장하거나 내보낼 수 있습니까?",
+                "answer": "예, 사용자가 자신의 사용자 정의 테마에 만족하면 해당 테마를 Windows 터미널과 호환되는 테마 파일로 쉽게 내보낼 수 있습니다. 웹 사이트는 사용자가 테마 파일을 바로 컴퓨터에 저장할 수 있도록 하는 Json 복사 버튼을 제공합니다."
+            }
+        ]
+    },
+    "jp": {
+        "buttonText": "生成を開始する！",
+        "QA": [
+            {
+                "question": "このウェブサイトの目的は何ですか？",
+                "answer": "このウェブサイトの目的は、ユーザーがWindowsターミナルの外観をカスタマイズするための便利で使いやすいツールを提供することです。ユーザーは色やカーソルスタイルなど、さまざまなビジュアルアスペクトを調整し、それからカスタマイズされたテーマファイルをダウンロードしてすぐにWindowsターミナルの設定で使用できます。究極の目標は、ユーザーがコマンドラインのエクスペリエンスと好みやスタイルを個人化できるようにすることです。"
+            },
+            {
+                "question": "ユーザーはカスタマイズされたテーマを保存またはエクスポートできますか？",
+                "answer": "はい、ユーザーがカスタマイズされたテーマに満足したら、それをWindowsターミナルと互換性のあるテーマファイルとして簡単にエクスポートできます。ウェブサイトには、ユーザーがテーマファイルを直接コンピューターに保存できるようにするJsonコピー​​ボタンがあります。"
+            }
+        ]
+    },
+    "ru": {
+        "buttonText": "Начать генерацию!",
+        "QA": [
+            {
+                "question": "Какова цель этого веб-сайта?",
+                "answer": "Цель этого веб-сайта - предоставить пользователям удобный и простой в использовании инструмент для настройки внешнего вида и поведения их Командного окна Windows. Пользователи могут настроить различные визуальные аспекты, такие как цвета и стили курсора, а затем загрузить настроенный файл темы для немедленного использования в своей установке Командного окна Windows. В конечном итоге цель заключается в том, чтобы пользователи могли настраивать свой опыт работы с командной строкой и свои предпочтения и стиль."
+            },
+            {
+                "question": "Могут ли пользователи сохранять или экспортировать свои настроенные темы?",
+                "answer": "Да, когда пользователи удовлетворены своей настроенной темой, они могут легко экспортировать ее в виде файла темы, совместимого с Командным окном Windows. Сайт предоставляет кнопку копирования Json, которая позволяет пользователям сохранять файл темы непосредственно на свой компьютер для немедленного использования."
+            }
+        ]
+    }
+}

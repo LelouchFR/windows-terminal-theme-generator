@@ -1,0 +1,20 @@
+---
+repository:
+  name: windows-terminal-theme-generator
+  topics: 'rust, yew, scss, windows, windows-terminal, html, theme-generator, stylist'
+  description: 'Blazingly fast Windows Terminal theme generator'
+  homepage: 'https://github.com/lelouchfr/windows-terminal-theme-generator'
+  default_branch: main
+  allow_merge_commit: true
+  allow_rebase_commit: true
+  allow_squash_merge: true
+  has_downloads: true
+  has_issues: true
+  has_projects: true
+
+labels:
+  - { color: 'E06C5C', name: 'bug', description: 'reporting a bug' }
+  - { color: 'E0CF5C', name: 'refactor', description: 'refactoring of code' }
+  - { color: '5DE1A1', name: 'feature', description: 'adding a new feature to the project' }
+  - { color: '6E5CE0', name: 'docs', description: 'adding/updating documentation' }
+  - { color: 'E59652', name: 'duplicate', description: 'if there is already one instance of the issue/pull request' }

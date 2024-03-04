@@ -1,0 +1,25 @@
+[package]
+name = "windows-terminal-scheme-generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = { version = "0.21.0", features = ["csr"] }
+yew-router = "0.18.0"
+yew-hooks = "0.3.0"
+rand = "0.8.5"
+web-sys = "0.3.67"
+wasm-bindgen-futures = "0.4.40"
+gloo-net = "0.5.0"
+gloo-events = "0.2.0"
+gloo-console = "0.3.0"
+derive_more = "0.99.17"
+
+# styling
+stylist = { version = "0.13.0", features = ["yew_integration"] }
+
+# json serialization/deserialization
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = "1.0"
+strum = "0.26"
+strum_macros = "0.26"

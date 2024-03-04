@@ -1,0 +1,144 @@
+@use "sass:math";
+@use "sass:list";
+@import "./assets/font/font_face.scss";
+@import "./assets/styles/color_gen.scss";
+@import "./assets/styles/vars.scss";
+
+
+@mixin set_color($color, $background-color) {
+    color: $color;
+    background-color: $background-color;
+}
+
+* {
+    transition: .2s ease;
+    
+    &::selection {
+        background-color: $selection-background;
+    }
+}
+
+body {
+   background-color: $background;
+   color: $foreground;
+}
+
+h1 {
+    font-family: $nl-font;
+    text-align: center;
+}
+
+main {
+
+    &.home-page {
+        background: $background;
+        section {
+            figure.hero-page {
+                position: relative;
+                $img-height: 314px;
+                height: $img-height * 2;
+                padding: 10px;
+                
+                img {
+                    position: absolute;
+                    width: 483px;
+                    
+                    $z-indexes: 3, 2, 1, 2;
+                    $img-x-positions: math.div(50%, 1.75), math.div(25%, 1.75), math.div(50%, 1.75), math.div(75%, 1.75);
+                    $img-y-positions: math.div(100%, 2.75), math.div(50%, 2.75), 0%, math.div(50%, 2.75);
+                    @for $i from 1 through 4 {
+                        &:nth-child(#{$i}) {
+                            left: list.nth($img-x-positions, $i);
+                            top: list.nth($img-y-positions, $i);
+                            z-index: list.nth($z-indexes, $i);
+                        }
+                    }
+                }
+            }
+
+            button {
+                background: $blue;
+                
+            }
+        }
+    }
+ 
+    &.generator {
+        
+        section {
+            &.wt_official_example {
+                display: grid;
+                grid-auto-columns: 40% 10%;
+                justify-content: center;
+                place-items: center;
+                padding: 2.5vw 0;
+
+                article {
+                    grid-column: 1;
+                    font-family: $nl-font;
+                    border: 1px solid $bright-black;
+                    border-radius: 5px;
+                    height: 100%;
+                    width: 100%;
+
+                    p {
+                        font-size: 2.25vw;
+                        margin: 10px;
+                    }
+                }
+
+                aside {
+                    width: 75px;
+                    display: grid;
+                    grid-column: 2;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 10px;
+                    border: 1px solid $bright-black;
+                    border-radius: 5px;
+                    @include set_color(initial, $background);
+
+                    > div {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 5px;
+                        position: relative;
+                        left: 50%;
+                        transform: translate(-50%);
+
+                        &:nth-child(1), &:nth-child(2){margin-top: 5px}
+                        &:nth-child(14), &:nth-child(15){margin-bottom: 5px}
+                    }
+                }
+            }
+
+            &.buttons {
+                display: flex;
+                justify-content: center;
+                
+                button {
+                    @include set_color(initial, $background);
+                    width: 75px;
+                    height: 75px;
+                    margin: 0 10px;
+                    border-radius: 15px;
+                    border: 1px solid $bright-black;
+                    background: $background;
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+        section.webfetch {
+            font-size: 1.5vw;
+            display: flex;
+            justify-content: center;
+            pre {
+                background: $background;
+                border: 1px solid $bright-black;
+                border-radius: 5px;
+                padding: 5px 2em;
+            }
+        }
+    }
+}
