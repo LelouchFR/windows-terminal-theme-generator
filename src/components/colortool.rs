@@ -1,6 +1,6 @@
 use yew::prelude::*;
 use gloo_console::log;
-// use crate::utils::color_classes;
+use yew::virtual_dom::VNode;
 
 fn mapped_text(background_colors: Vec<&str>, foreground_colors: Vec<&str>, text: &str) -> Html {
     (background_colors.iter().zip(foreground_colors))
@@ -55,11 +55,19 @@ pub fn color_tool() -> Html {
         }
     }).collect();
 
+    let lines = color_lines.iter().zip(bright_color_lines.iter()).map(|(color, bright_color)| {
+        html! {
+            <>
+                {<VNode as Clone>::clone(&*color)}
+                {<VNode as Clone>::clone(&*bright_color)}
+            </>
+        }
+    }).collect::<Html>();
+    
     html! {
         <div>
             {header}
-            {color_lines}
-            {bright_color_lines}
+            {lines}
         </div>
     }
 }

@@ -12,7 +12,6 @@ use gloo_console::log;
 use stylist::{
     yew::Global
 };
-
 use crate::{
     colors::colors::{
         WindowsTerminalTheme

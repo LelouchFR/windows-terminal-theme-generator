@@ -33,7 +33,9 @@ pub fn tool_wrapper(props: &ToolWrapperProps) -> Html {
 
     html! {
         <section class={classes!("bright-black--as-background")}>
-            {format!("{:?}", tools)}
+            <button>{"WebFetch"}</button>
+            <button>{"ColorTool"}</button>
+            {(*tools).clone()}
         </section>
     }
 }

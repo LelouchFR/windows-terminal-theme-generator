@@ -17,7 +17,7 @@ See your favorite colors of choice for your Windows Terminal.
 Here is a demonstration video of how it's working:
 
 <video controls>
-    <source src="./docs/demonstration.mp4" />
+    <source src="./docs/demonstration.gif" />
 </video>
 
 ## Features

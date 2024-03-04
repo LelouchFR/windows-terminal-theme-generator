@@ -33,6 +33,7 @@ main {
     &.home-page {
         background: $background;
         section {
+            padding-bottom: 4em;
             figure.hero-page {
                 position: relative;
                 $img-height: 314px;
@@ -56,10 +57,34 @@ main {
                 }
             }
 
+            &.qa article {
+                font-family: $nl-font;
+                width: 80%;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%);
+
+                h2, p {
+                    padding: 10px;
+                }
+            }
+
             button {
                 background: $blue;
+                border: none;
+                border-radius: 10px;
+                padding: 10px 20px;
+                font-family: $nl-font;
+                position: relative;
+                left: 50%;
+                transform: translate(-75%);
                 
+                a {
+                    color: $black;
+                    text-decoration: none;
+                }
             }
+
         }
     }
  
