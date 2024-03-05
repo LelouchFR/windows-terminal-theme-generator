@@ -15,7 +15,7 @@ body:
     attributes:
       label: Description of the bug
       description: Give us a brief description of what happened and what should have happened
-    validation:
+    validations:
       required: true
 
   - type: textarea
@@ -27,7 +27,7 @@ body:
         1. Go to '...'
         2. Click on '...'
         3. See error in console
-    validation:
+    validations:
       required: true
 
   - type: textarea

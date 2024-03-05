@@ -16,9 +16,7 @@ See your favorite colors of choice for your Windows Terminal.
 
 Here is a demonstration video of how it's working:
 
-<video controls>
-    <source src="./docs/demonstration.gif" />
-</video>
+![Demonstration Gif](./docs/demonstration.gif)
 
 ## Features
 
@@ -69,7 +67,7 @@ We welcome contributions! Follow these steps to contribute:
 
 ## Contact
 
-For issues and feature requests, feel free to [open an issue](https://github.com/lelouchfr/windows-terminal-theme-generatorl/issues)
+For issues and feature requests, feel free to [open an issue](./issues)
 
 ## License
 
