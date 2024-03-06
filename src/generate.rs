@@ -23,7 +23,8 @@ use crate::{
     },
     utils::{
         generate_theme,
-        color_classes
+        color_classes,
+        ColoredTextHeader
     }
 };
 
@@ -177,15 +178,7 @@ pub fn generator(props: &GenProps) -> Html {
     html! {
         <main class={classes!("generator")}>
             <Global css={generated_theme.get_css_vars()} />
-            <h1>
-                {
-                    vec!["Windows ", "Terminal ", "Theme ", "Generator"]
-                        .iter()
-                        .enumerate()
-                        .map(|(i, word)| html!{<span class={classes!(color_classes[i * 2 + 3])}>{word}</span>})
-                        .collect::<Html>()
-                }
-            </h1>
+            <ColoredTextHeader value={"Windows ,Terminal ,Theme ,Generator".to_string()} class={"".to_string()} />
             <section class={classes!("wt_official_example")}>
                 <article>
                     {wt_text_example}

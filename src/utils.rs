@@ -1,3 +1,4 @@
+use yew::prelude::*;
 use rand::prelude::*;
 use gloo_net::http::Request;
 use serde::Deserialize;
@@ -111,23 +112,6 @@ pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
     impl_new_theme
 }
 
-// pub async fn get_json_lang<T: for<'de> Deserialize<'de>>(file: &str, lang: &str) -> T { // FIXME problem_with_the_generic_type
-//     let fetched_data: T = Request::get(file).send().await.unwrap().json().await.unwrap();
-//
-//     let data_filtered = match lang {
-//         "en" => fetched_data.en,
-//         "fr" => fetched_data.fr,
-//         "de" => fetched_data.de,
-//         "sp" => fetched_data.sp,
-//         "hi" => fetched_data.hi,
-//         "kr" => fetched_data.kr,
-//         "jp" => fetched_data.jp,
-//         "ru" => fetched_data.ru,
-//         _ => fetched_data.en,
-//     };
-//     data_filtered
-// }
-
 #[allow(non_upper_case_globals)]
 pub const color_classes: [&str;20] = [
     "black",
@@ -151,3 +135,31 @@ pub const color_classes: [&str;20] = [
     "selection-background",
     "cursor-color"
 ];
+
+#[derive(Properties, PartialEq)]
+pub struct ColoredTextHeaderProps {
+    pub value: String,
+    pub class: String,
+}
+
+#[function_component(ColoredTextHeader)]
+pub fn colored_text_header(props: &ColoredTextHeaderProps) -> Html {
+
+    html! {
+        <h1 class={classes!(&props.class)}>
+            {
+                props.value
+                    .split(",")
+                    .into_iter()
+                    .enumerate()
+                    .map(|(i, word)| html!{<span class={classes!(color_classes[i * 2 + 3])}>{word}</span>})
+                    .collect::<Html>()
+            }
+        </h1>
+    }
+}
+
+pub fn get_random_color_on_hover() -> String {
+    let mut rng = rand::thread_rng();
+    color_classes[rng.gen_range(0..=color_classes.len())].to_string()
+}

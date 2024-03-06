@@ -7,6 +7,11 @@ use crate::{
     router::{
         Route,
         Language
+    },
+    components::footer::Footer,
+    utils::{
+        color_classes,
+        ColoredTextHeader
     }
 };
 
@@ -86,31 +91,35 @@ pub fn home_page(props: &HomeProps) -> Html {
     };
     
     html! {
-        <main class={classes!("home-page")}>
-            <section>
-                <figure class={classes!("hero-page")}>
-                    {
-                        (0..=3)
-                            .map(|id| html!{<img class={classes!(format!("main-page-img-{}", id + 1))} src={format!("img/{}_mode_{}.png", img_modes[id % 2], ((id % 4) / 2) + 1)} draggable={"false"} />})
-                            .collect::<Html>()
-                    }
-                </figure>
-                <button>
-                    <Link<Route> to={Route::GeneratorLang{lang: language}}>{&data_filtered.button_text}</Link<Route>>
-                </button>
-            </section>
-            <section class={classes!("qa")}>
-                {
-                    data_filtered.qa.clone().into_iter().map(|qa| {
-                        html! {
-                            <article>
-                                <h2>{qa.question}</h2>
-                                <p>{qa.answer}</p>
-                            </article>
+        <>
+            <ColoredTextHeader value={"Windows ,Terminal ,Theme ,Generator".to_string()} class={"home-page-title".to_string()} />
+            <main class={classes!("home-page")}>
+                <section>
+                    <figure class={classes!("hero-page")}>
+                        {
+                            (0..=3)
+                                .map(|id| html!{<img class={classes!(format!("main-page-img-{}", id + 1))} alt={"an example image from the generator"} src={format!("img/{}_mode_{}.png", img_modes[id % 2], ((id % 4) / 2) + 1)} draggable={"false"} />})
+                                .collect::<Html>()
                         }
-                    }).collect::<Html>()
-                }
-            </section>
-        </main>
+                    </figure>
+                    <button>
+                        <Link<Route> to={Route::GeneratorLang{lang: language}}>{&data_filtered.button_text}</Link<Route>>
+                    </button>
+                </section>
+                <section class={classes!("qa")}>
+                    {
+                        data_filtered.qa.clone().into_iter().map(|qa| {
+                            html! {
+                                <article>
+                                    <h2>{qa.question}</h2>
+                                    <p>{qa.answer}</p>
+                                </article>
+                            }
+                        }).collect::<Html>()
+                    }
+                </section>
+            </main>
+            <Footer lang={props.lang.clone()}/>
+        </>
     }
 }

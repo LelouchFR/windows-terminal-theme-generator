@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /src/assets/svg/
+Disallow: /src/assets/json/
+Sitemap: https://windows-terminal-theme-generator.netlify.app/sitemap.xml

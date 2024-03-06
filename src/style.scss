@@ -19,39 +19,48 @@
 }
 
 body {
-   background-color: $background;
-   color: $foreground;
+    margin: 0;
+    padding: 0;
+    background-color: $background;
+    color: $foreground;
 }
 
 h1 {
     font-family: $nl-font;
     text-align: center;
+
+    &.home-page-title {
+        padding: 1em;
+    }
 }
 
 main {
 
     &.home-page {
         background: $background;
+        
         section {
             padding-bottom: 4em;
+            
             figure.hero-page {
                 position: relative;
-                $img-height: 314px;
+                $img-height: 20.443vw;
                 height: $img-height * 2;
                 padding: 10px;
                 
                 img {
                     position: absolute;
-                    width: 483px;
+                    width: 31.445vw;
                     
                     $z-indexes: 3, 2, 1, 2;
-                    $img-x-positions: math.div(50%, 1.75), math.div(25%, 1.75), math.div(50%, 1.75), math.div(75%, 1.75);
+                    $img-x-positions: math.div(50%, 1.35), math.div(25%, 1.35), math.div(50%, 1.35), math.div(75%, 1.35);
                     $img-y-positions: math.div(100%, 2.75), math.div(50%, 2.75), 0%, math.div(50%, 2.75);
                     @for $i from 1 through 4 {
                         &:nth-child(#{$i}) {
                             left: list.nth($img-x-positions, $i);
                             top: list.nth($img-y-positions, $i);
                             z-index: list.nth($z-indexes, $i);
+                            transform: translate(-20%);
                         }
                     }
                 }
@@ -70,6 +79,7 @@ main {
             }
 
             button {
+                font-size: 1.25em;
                 background: $blue;
                 border: none;
                 border-radius: 10px;
@@ -163,6 +173,48 @@ main {
                 border: 1px solid $bright-black;
                 border-radius: 5px;
                 padding: 5px 2em;
+            }
+        }
+    }
+}
+
+footer {
+    font-family: $nl-font;
+    
+    section {
+        &.footer_columns {
+            background: #30313B;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 1em;
+
+            section {
+                padding: 1em;
+
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding-inline-start: 20px;
+                    line-height: 2.5em;
+                    
+                    li > a {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        &.license {
+            background: #484953;
+            display: flex;
+            justify-content: center;
+            
+            p {
+                align-self: center;
+
+                a {
+                    text-decoration: none;
+                }
             }
         }
     }

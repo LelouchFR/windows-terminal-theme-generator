@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://windows-temrinal-theme-generator.netlify.app/</loc>
+        <lastmod>2024-03-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <xhtml rel="alternate" hreflang="en" href="https://windows-temrinal-theme-generator.netlify.app/en/"/>
+        <xhtml rel="alternate" hreflang="fr" href="https://windows-temrinal-theme-generator.netlify.app/fr/"/>
+        <xhtml rel="alternate" hreflang="de" href="https://windows-temrinal-theme-generator.netlify.app/de/"/>
+        <xhtml rel="alternate" hreflang="es" href="https://windows-temrinal-theme-generator.netlify.app/sp/"/>
+        <xhtml rel="alternate" hreflang="hi" href="https://windows-temrinal-theme-generator.netlify.app/hi/"/>
+        <xhtml rel="alternate" hreflang="kr" href="https://windows-temrinal-theme-generator.netlify.app/kr/"/>
+        <xhtml rel="alternate" hreflang="jp" href="https://windows-temrinal-theme-generator.netlify.app/jp/"/>
+        <xhtml rel="alternate" hreflang="ru" href="https://windows-temrinal-theme-generator.netlify.app/ru/"/>
+    </url>
+    <url>
+        <loc>https://windows-temrinal-theme-generator.netlify.app/generate</loc>
+        <lastmod>2024-03-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+        <xhtml rel="alternate" hreflang="en" href="https://windows-temrinal-theme-generator.netlify.app/en/generate"/>
+        <xhtml rel="alternate" hreflang="fr" href="https://windows-temrinal-theme-generator.netlify.app/fr/generate"/>
+        <xhtml rel="alternate" hreflang="de" href="https://windows-temrinal-theme-generator.netlify.app/de/generate"/>
+        <xhtml rel="alternate" hreflang="es" href="https://windows-temrinal-theme-generator.netlify.app/sp/generate"/>
+        <xhtml rel="alternate" hreflang="hi" href="https://windows-temrinal-theme-generator.netlify.app/hi/generate"/>
+        <xhtml rel="alternate" hreflang="kr" href="https://windows-temrinal-theme-generator.netlify.app/kr/generate"/>
+        <xhtml rel="alternate" hreflang="jp" href="https://windows-temrinal-theme-generator.netlify.app/jp/generate"/>
+        <xhtml rel="alternate" hreflang="ru" href="https://windows-temrinal-theme-generator.netlify.app/ru/generate"/>
+    </url>
+    <url>
+        <loc>https://windows-temrinal-theme-generator.netlify.app/release</loc>
+        <lastmod>2024-03-04</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+        <xhtml rel="alternate" hreflang="en" href="https://windows-temrinal-theme-generator.netlify.app/en/release"/>
+        <xhtml rel="alternate" hreflang="fr" href="https://windows-temrinal-theme-generator.netlify.app/fr/release"/>
+        <xhtml rel="alternate" hreflang="de" href="https://windows-temrinal-theme-generator.netlify.app/de/release"/>
+        <xhtml rel="alternate" hreflang="es" href="https://windows-temrinal-theme-generator.netlify.app/sp/release"/>
+        <xhtml rel="alternate" hreflang="hi" href="https://windows-temrinal-theme-generator.netlify.app/hi/release"/>
+        <xhtml rel="alternate" hreflang="kr" href="https://windows-temrinal-theme-generator.netlify.app/kr/release"/>
+        <xhtml rel="alternate" hreflang="jp" href="https://windows-temrinal-theme-generator.netlify.app/jp/release"/>
+        <xhtml rel="alternate" hreflang="ru" href="https://windows-temrinal-theme-generator.netlify.app/ru/release"/>
+    </url>
+</urlset>
