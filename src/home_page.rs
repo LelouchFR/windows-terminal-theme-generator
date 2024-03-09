@@ -1,6 +1,5 @@
 use yew::prelude::*;
 use yew_router::prelude::Link;
-use gloo_console::log;
 use gloo_net::http::Request;
 use serde::Deserialize;
 use crate::{
@@ -9,10 +8,7 @@ use crate::{
         Language
     },
     components::footer::Footer,
-    utils::{
-        color_classes,
-        ColoredTextHeader
-    }
+    utils::ColoredTextHeader
 };
 
 #[derive(Clone, PartialEq, Deserialize, Default)]

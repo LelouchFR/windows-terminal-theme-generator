@@ -2,20 +2,48 @@ use yew::prelude::*;
 use gloo_console::log;
 use yew::virtual_dom::VNode;
 
-fn mapped_text(background_colors: Vec<&str>, foreground_colors: Vec<&str>, text: &str) -> Html {
-    (background_colors.iter().zip(foreground_colors))
-        .map(|(bg_color, fg_color)| {
+fn mapped_text(background_colors: Vec<String>, foreground_colors: Vec<String>, text: &str) -> Html {
+    background_colors
+        .iter()
+        .enumerate()
+        .map(|(i, bg_color)| {
+            let fg_color = &foreground_colors[i];
             log!(format!("{}, {}", bg_color, fg_color));
-            html! {<><span class={classes!(bg_color.to_string(), fg_color.to_string())}>{"  "}{text}{"  "}</span><span>{" "}</span></>}
+            html! {
+                <>
+                    <span class={classes!(bg_color, fg_color)}>
+                        {"  "}{text}{"  "}
+                    </span>
+                    <span>{" "}</span>
+                </>
+            }
         })
         .collect::<Html>()
 }
 
 #[function_component(ColorTool)]
 pub fn color_tool() -> Html {
-    let foreground_colors_classes: Vec<&str> = vec!["black", "red", "green", "yellow", "blue", "purple", "cyan", "white"];
-    let foreground_colors_classes_2: Vec<&str> = vec!["bright-black", "bright-red", "bright-green", "bright-yellow", "bright-blue", "bright-purple", "bright-cyan", "bright-white"];
-    let background_colors_classes: Vec<&str> = vec!["black--as-background", "red--as-background", "green--as-background", "yellow--as-background", "blue--as-background", "purple--as-background", "cyan--as-background", "white--as-background"];
+    let foreground_colors_classes: Vec<String> = vec![
+        "black".to_string(),
+        "red".to_string(),
+        "green".to_string(),
+        "yellow".to_string(),
+        "blue".to_string(),
+        "purple".to_string(),
+        "cyan".to_string(),
+        "white".to_string()
+    ];
+    
+    let foreground_colors_classes_2: Vec<String> = foreground_colors_classes
+        .iter()
+        .map(|color| format!("bright-{}", color))
+        .collect();
+    
+    let background_colors_classes: Vec<String> = foreground_colors_classes
+        .iter()
+        .map(|color| format!("{}--as-background", color))
+        .collect();
+    
     let foreground_colors: Vec<&str> = vec!["30m", "31m", "32m", "33m", "34m", "35m", "36m", "37m"];
     let background_colors: Vec<&str> = vec!["40m", "41m", "42m", "43m", "44m", "45m", "46m", "47m"];
     let text: &str = "gYw";
@@ -65,9 +93,9 @@ pub fn color_tool() -> Html {
     }).collect::<Html>();
     
     html! {
-        <div>
+        <section class={classes!("colortool")}>
             {header}
             {lines}
-        </div>
+        </section>
     }
 }

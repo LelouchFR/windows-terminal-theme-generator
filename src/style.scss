@@ -72,6 +72,7 @@ main {
                 position: relative;
                 left: 50%;
                 transform: translate(-50%);
+                line-height: 1.75;
 
                 h2, p {
                     padding: 10px;
@@ -218,4 +219,8 @@ footer {
             }
         }
     }
+}
+
+section.colortool pre {
+    margin: 0;
 }

@@ -16,15 +16,12 @@ use crate::{
     colors::colors::{
         WindowsTerminalTheme
     },
-    components::{
-        tool_wrapper::ToolWrapper,
-        ascii_browsers::AsciiBrowser,
-        colortool::ColorTool
-    },
+    components::tool_wrapper::ToolWrapper,
     utils::{
+        WindowsTerminalText,
+        ColoredTextHeader,
         generate_theme,
-        color_classes,
-        ColoredTextHeader
+        color_classes
     }
 };
 
@@ -80,7 +77,6 @@ pub struct GenProps {
 
 #[function_component(Generator)]
 pub fn generator(props: &GenProps) -> Html {
-    let wt_text_example: Html = html! {<p><span class={classes!(color_classes[15])}>{"Windows Terminal"}</span><br /><span class={classes!(color_classes[7])}><img src="/svg/register_path_style.svg" alt={"C:\\"} width={"64px"} draggable={"false"}/>{" git"}</span><span class={classes!(color_classes[15])}>{" diff"}</span><span class={classes!(color_classes[1])}>{" -w"}</span><br /><span class={classes!(color_classes[15])}>{"diff --git a/win b/win"}</span><br /><span class={classes!(color_classes[13])}>{"@@ -1 +1 @@"}</span><br /><span class={classes!(color_classes[3])}>{"-   Windows Console"}</span><br /><span class={classes!(color_classes[5])}>{"+   Windows Terminal!"}</span><br /><span class={classes!(color_classes[7])}><img src="/svg/register_path_style.svg" alt={"C:\\"} width={"64px"} draggable={"false"}/>{" Write-Host"}</span><span class={classes!(color_classes[13])}>{" \"✏!\""}</span></p>};
     let clipboard = use_clipboard();
     let darkmode_active: UseStateHandle<bool> = use_state(|| false);
     let generated_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
@@ -181,7 +177,7 @@ pub fn generator(props: &GenProps) -> Html {
             <ColoredTextHeader value={"Windows ,Terminal ,Theme ,Generator".to_string()} class={"".to_string()} />
             <section class={classes!("wt_official_example")}>
                 <article>
-                    {wt_text_example}
+                    <WindowsTerminalText />
                 </article>
                 <aside>
                     {

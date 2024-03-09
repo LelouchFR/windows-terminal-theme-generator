@@ -1,7 +1,5 @@
 use yew::prelude::*;
 use rand::prelude::*;
-use gloo_net::http::Request;
-use serde::Deserialize;
 use crate::colors::colors::{HSL, WindowsTerminalTheme, ToHSL};
 
 pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
@@ -156,6 +154,30 @@ pub fn colored_text_header(props: &ColoredTextHeaderProps) -> Html {
                     .collect::<Html>()
             }
         </h1>
+    }
+}
+
+#[function_component(WindowsTerminalText)]
+pub fn windows_terminal_text() -> Html {
+    html! {
+        <p>
+            <span class={classes!(color_classes[15])}>{"Windows Terminal"}</span><br />
+            <span class={classes!(color_classes[7])}>
+                <img src="/svg/register_path_style.svg" alt={"C:\\"} width={"64px"} draggable={"false"}/>
+                {" git"}
+            </span>
+            <span class={classes!(color_classes[15])}>{" diff"}</span>
+            <span class={classes!(color_classes[1])}>{" -w"}</span><br />
+            <span class={classes!(color_classes[15])}>{"diff --git a/win b/win"}</span><br />
+            <span class={classes!(color_classes[13])}>{"@@ -1 +1 @@"}</span><br />
+            <span class={classes!(color_classes[3])}>{"-   Windows Console"}</span><br />
+            <span class={classes!(color_classes[5])}>{"+   Windows Terminal!"}</span><br />
+            <span class={classes!(color_classes[7])}>
+                <img src="/svg/register_path_style.svg" alt={"C:\\"} width={"64px"} draggable={"false"}/>
+                {" Write-Host"}
+            </span>
+            <span class={classes!(color_classes[13])}>{" \"✏!\""}</span>
+        </p>
     }
 }
 
