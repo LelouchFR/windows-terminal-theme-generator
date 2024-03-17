@@ -110,6 +110,34 @@ pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
     impl_new_theme
 }
 
+pub fn gen_theme_from_link(colors: String) -> WindowsTerminalTheme {
+    let colors: Vec<String> = colors.split('-').map(|x| format!("#{}", x)).collect();
+
+    WindowsTerminalTheme::new(
+        colors[0].clone(),
+        colors[1].clone(),
+        colors[2].clone(),
+        colors[3].clone(),
+        colors[4].clone(),
+        colors[5].clone(),
+        colors[6].clone(),
+        colors[7].clone(),
+        colors[8].clone(),
+        colors[9].clone(),
+        colors[10].clone(),
+        colors[11].clone(),
+        colors[12].clone(),
+        colors[13].clone(),
+        colors[14].clone(),
+        colors[15].clone(),
+        "Rust Generated Theme".to_string(),
+        colors[19].clone(),
+        colors[16].clone(),
+        colors[17].clone(),
+        colors[18].clone() 
+    )
+}
+
 #[allow(non_upper_case_globals)]
 pub const color_classes: [&str;20] = [
     "black",
@@ -179,6 +207,11 @@ pub fn windows_terminal_text() -> Html {
             <span class={classes!(color_classes[13])}>{" \"✏!\""}</span>
         </p>
     }
+}
+
+pub fn make_chars(character: char, times: usize) -> String {
+    let res: String = format!("{}", character).repeat(times);
+    res
 }
 
 pub fn get_random_color_on_hover() -> String {

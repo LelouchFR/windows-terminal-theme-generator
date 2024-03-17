@@ -33,6 +33,10 @@ pub enum Route {
     GeneratorLang { lang: Language },
     #[at("/generate")]
     Generator,
+    #[at("/:lang/generate/:colors")]
+    GeneratorLangWithColors { lang: Language, colors: String },
+    #[at("/generate/:colors")]
+    GeneratorWithColors { colors: String },
     #[at("/:lang/release")]
     ReleaseLang { lang: Language },
     #[at("/release")]
@@ -48,6 +52,8 @@ pub fn switch(route: Route) -> Html {
         Route::Home => html! {<Home lang={Language::En.to_string()} />},
         Route::GeneratorLang { lang } => html! {<Generator lang={lang.to_string()} />},
         Route::Generator => html! {<Generator lang={Language::En.to_string()} />},
+        Route::GeneratorLangWithColors { lang, colors } => html! {<Generator lang={lang.to_string()} colors={colors} />},
+        Route::GeneratorWithColors { colors } => html! {<Generator lang={Language::En.to_string()} colors={colors} />},
         Route::ReleaseLang { lang } => html! {<h1>{"V 1.0 in "}{lang.to_string()}</h1>},
         Route::Release => html! {<h1>{"V 1.0 in "}{Language::En.to_string()}</h1>},
         Route::NotFound => html! { <h1>{ "404: Page not found" }</h1> },

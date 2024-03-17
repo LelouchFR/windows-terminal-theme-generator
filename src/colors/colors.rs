@@ -88,6 +88,31 @@ impl WindowsTerminalTheme {
         )
     }
 
+    pub fn to_vec(&self) -> Vec<String> {
+        vec![
+            self.black.clone(),
+            self.bright_black.clone(),
+            self.red.clone(),
+            self.bright_red.clone(),
+            self.green.clone(),
+            self.bright_green.clone(),
+            self.yellow.clone(),
+            self.bright_yellow.clone(),
+            self.blue.clone(),
+            self.bright_blue.clone(),
+            self.purple.clone(),
+            self.bright_purple.clone(),
+            self.cyan.clone(),
+            self.bright_cyan.clone(),
+            self.white.clone(),
+            self.bright_white.clone(),
+            self.background.clone(),
+            self.foreground.clone(),
+            self.selection_background.clone(),
+            self.cursor_color.clone(),
+        ]
+    }
+
     pub fn to_json(&self) -> String {
         match serde_json::to_string(self) {
             Ok(json_str) => json_str,

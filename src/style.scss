@@ -176,6 +176,17 @@ main {
                 padding: 5px 2em;
             }
         }
+
+        section.colortool {
+            font-size: 1.5vw;
+            background: $background;
+            border: 1px solid $bright-black;
+            border-radius: 5px;
+            position: relative;
+            width: 80%;
+            left: 50%;
+            transform: translate(-50%);
+        }
     }
 }
 

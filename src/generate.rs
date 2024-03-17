@@ -1,26 +1,21 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
-// use gloo_events::EventListener; // https://docs.rs/gloo-events/latest/gloo_events/struct.EventListener.html
-// use web_sys::window;
-// use std::rc::Rc;
-// use std::cell::RefCell;
-// use web_sys::wasm_bindgen::JsCast;
 use gloo_net::http::Request;
 use serde::Deserialize;
 use gloo_console::log;
-
 use stylist::{
     yew::Global
 };
 use crate::{
     colors::colors::{
-        WindowsTerminalTheme
+        WindowsTerminalTheme,
     },
     components::tool_wrapper::ToolWrapper,
     utils::{
         WindowsTerminalText,
         ColoredTextHeader,
         generate_theme,
+        gen_theme_from_link,
         color_classes
     }
 };
@@ -73,13 +68,19 @@ pub struct Data {
 #[derive(Properties, PartialEq)]
 pub struct GenProps {
     pub lang: String,
+    #[prop_or_default]
+    pub colors: String,
 }
 
 #[function_component(Generator)]
 pub fn generator(props: &GenProps) -> Html {
     let clipboard = use_clipboard();
     let darkmode_active: UseStateHandle<bool> = use_state(|| false);
-    let generated_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
+    let generated_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| if !props.colors.as_str().is_empty() {
+        gen_theme_from_link(props.colors.clone())
+    } else {
+        generate_theme(*darkmode_active)
+    });
     let previous_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
     let next_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
     let used_tools: Vec<String> = vec!["BrowserFetch".to_string(), "ColorTool".to_string()];
@@ -98,7 +99,7 @@ pub fn generator(props: &GenProps) -> Html {
         log!("randomize button clicked");
     });
  
-    // FIXME
+    // TODO
     let generated_theme_clone = generated_theme.clone();
     let previous_theme_onclick = Callback::from(move |_| {
         // previous_theme_clone.set(/* generated_theme_clone */);
@@ -107,7 +108,7 @@ pub fn generator(props: &GenProps) -> Html {
         log!(&*generated_theme_clone.to_json());
     });
 
-    // FIXME
+    // TODO
     let next_theme_onclick = Callback::from(move |_| {
         // next_theme_clone.set();
         log!("next button clicked");
@@ -126,9 +127,13 @@ pub fn generator(props: &GenProps) -> Html {
         clipboard_clone.write_text(format!("{:?}", generated_theme_clone.to_json()).to_owned());
     });
 
-    // FIXME
+    let clipboard_clone = clipboard.clone();
+    let generated_theme_clone = generated_theme.clone();
+    let lang = props.lang.clone();
     let share_theme_onclick = Callback::from(move |_| {
-        log!("share button clicked");
+        log!("share link copied to clipboard!");
+        let colors = generated_theme_clone.to_vec().iter().map(|x| format!("{}", &x[1..=x.len() - 1])).collect::<Vec<String>>();
+        clipboard_clone.write_text(format!("https://windows-terminal-theme-generator.netlify.app/{}/generate/{}", lang, colors.join("-")));
     });
     
     let data: UseStateHandle<Data> = use_state(|| Data::default());
