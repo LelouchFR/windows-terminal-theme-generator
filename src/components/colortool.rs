@@ -1,11 +1,17 @@
 use yew::prelude::*;
 use crate::utils::make_chars;
 
-fn mapped_text(background_colors: Vec<String>, foreground_colors: Vec<String>, text: &str) -> Html {
-    foreground_colors.iter().map(|fg_color| {
+fn mapped_text(background_colors: Vec<String>, foreground_colors: Vec<String>, text: &str, vertical_text: Vec<String>) -> Html {
+    foreground_colors.iter().enumerate().map(|(i, fg_color)| {
+        let v_text = if i % 2 == 0 {
+            format!("{}{}", vertical_text[i % 8].clone(), make_chars(' ', 5))
+        } else {
+            format!("1;{}{}", vertical_text[(i - 1) % 8].clone(), make_chars(' ', 3))
+        };
+        
         html! {
             <>
-                {make_chars(' ', 8)}
+                {v_text}
                 {
                     background_colors.iter().map(|bg_color| {
                         html! {
@@ -61,8 +67,7 @@ pub fn color_tool() -> Html {
         .map(|color| format!("{}--as-background", color))
         .collect();
     
-    // FIXME need to add vertical text
-    let _vertical_text: Vec<String> = (30..=37).map(|x| format!("{}m", x)).collect();
+    let vertical_text: Vec<String> = (30..=37).map(|x| format!("{}m", x)).collect();
     let horizontal_text: Vec<String> = (40..=47).map(|x| format!("{}m", x)).collect();
     let text: &str = "gYw";
 
@@ -83,7 +88,14 @@ pub fn color_tool() -> Html {
         <section class={classes!("colortool")}>
             <pre>
                 {header}
-                {mapped_text(background_color_classes.clone(), color_classes.iter().map(|x| format!("{}", x)).collect(), text)}
+                {
+                    mapped_text(
+                        background_color_classes.clone(),
+                        color_classes.iter().map(|x| format!("{}", x)).collect(),
+                        text,
+                        vertical_text
+                    )
+                }
             </pre>
         </section>
     }

@@ -34,7 +34,7 @@ Through it's simple UI and and a perfect user experience, you will never get tro
 
 ### Export/Import Themes
 
-You can import your own themes into the website to watch if the colors match other interesting patterns or to share them to others.
+You can import your own themes into the website to watch if the colors match other interesting patterns or to share them to others. [More About That Here](/docs/import_export.md)
 
 ## Installation
 

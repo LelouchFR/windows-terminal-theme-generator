@@ -3,14 +3,15 @@ use yew_hooks::prelude::*;
 use gloo_net::http::Request;
 use serde::Deserialize;
 use gloo_console::log;
-use stylist::{
-    yew::Global
-};
+use stylist::yew::Global;
 use crate::{
-    colors::colors::{
-        WindowsTerminalTheme,
+    colors::colors::WindowsTerminalTheme,
+    components::{
+        tool_wrapper::{ToolComponent, ToolWrapper},
+        alerts::{AlertMode, Alert},
+        buttons::Button,
+        icons::Icons
     },
-    components::tool_wrapper::ToolWrapper,
     utils::{
         WindowsTerminalText,
         ColoredTextHeader,
@@ -19,29 +20,6 @@ use crate::{
         color_classes
     }
 };
-
-#[derive(Debug, Clone)]
-pub struct Button {
-    src: String,
-    width: String,
-    alt: String,
-    onclick: Callback<()>,
-}
-
-impl Button {
-    pub fn new(src: String, width: String, alt: String, onclick: Callback<()>) -> Button {
-        Button {src, width, alt, onclick}
-    }
-
-    pub fn create(&self) -> Html {
-        let onclick = self.onclick.clone();
-        html! {
-            <button title={self.alt.clone()} onclick={move |_| {onclick.emit(());}}>
-                <img src={self.src.clone()} width={self.width.clone()} alt={self.alt.clone()} />
-            </button>
-        }
-    }
-}
 
 #[derive(Clone, PartialEq, Deserialize, Default)]
 pub struct DataValue {
@@ -76,41 +54,49 @@ pub struct GenProps {
 pub fn generator(props: &GenProps) -> Html {
     let clipboard = use_clipboard();
     let darkmode_active: UseStateHandle<bool> = use_state(|| false);
+
+    let alerts: UseStateHandle<Alert> = use_state(|| {
+        if !props.colors.trim().is_empty() {
+            if props.colors.split('-').count() == 20 {
+                Alert::new(AlertMode::Validation, 10, "All Colors are Imported with Success".to_string())
+            } else {
+                Alert::new(AlertMode::Error, 10, format!("Not Enough Color For a Complete Theme, There Should be 20, instead found {} colors", props.colors.split('-').count()))
+            }
+        } else {
+            Alert::default()
+        }
+    });
+
     let generated_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| if !props.colors.as_str().is_empty() {
         gen_theme_from_link(props.colors.clone())
     } else {
         generate_theme(*darkmode_active)
     });
-    let previous_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
-    let next_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
-    let used_tools: Vec<String> = vec!["BrowserFetch".to_string(), "ColorTool".to_string()];
+    // let previous_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
+    // let next_theme: UseStateHandle<WindowsTerminalTheme> = use_state(|| generate_theme(*darkmode_active));
+    let used_tools: Vec<ToolComponent> = vec![ToolComponent::BrowserFetch, ToolComponent::ColorTool];
 
 
     // 3 states of a theme: 1. Live theme, 2. Previous theme, 3. Next Theme
     let generated_theme_clone = generated_theme.clone();
-    let _previous_theme_clone = previous_theme.clone();
-    let _next_theme_clone = next_theme.clone();
     let darkmode_active_clone = darkmode_active.clone();
-    
+    let alerts_clone = alerts.clone();
     let randomize_theme_onclick = Callback::from(move |_| {
         let new_theme = generate_theme(*darkmode_active_clone);
-        // previous_theme_clone.set(/* generated_theme */);
         generated_theme_clone.set(new_theme);
-        log!("randomize button clicked");
+        alerts_clone.set(Alert::default());
     });
  
     // TODO
-    let generated_theme_clone = generated_theme.clone();
+    let alerts_clone = alerts.clone();
     let previous_theme_onclick = Callback::from(move |_| {
-        // previous_theme_clone.set(/* generated_theme_clone */);
-        // next_theme_clone.set(/* previous_theme_clone */);
-        log!("previous button clicked");
-        log!(&*generated_theme_clone.to_json());
+        alerts_clone.set(Alert::new(AlertMode::Warning, 5, "Previous Button not implemented For now".to_string()));
     });
 
     // TODO
+    let alerts_clone = alerts.clone();
     let next_theme_onclick = Callback::from(move |_| {
-        // next_theme_clone.set();
+        alerts_clone.set(Alert::new(AlertMode::Warning, 5, "Next Button not implemented For now".to_string()));
         log!("next button clicked");
     });
 
@@ -123,17 +109,20 @@ pub fn generator(props: &GenProps) -> Html {
 
     let clipboard_clone = clipboard.clone();
     let generated_theme_clone = generated_theme.clone();
+    let alerts_clone = alerts.clone();
     let copy_theme_onclick = Callback::from(move |_| {
         clipboard_clone.write_text(format!("{:?}", generated_theme_clone.to_json()).to_owned());
+        alerts_clone.set(Alert::new(AlertMode::Info, 5, "Json Copied with Success".to_string()));
     });
 
     let clipboard_clone = clipboard.clone();
     let generated_theme_clone = generated_theme.clone();
     let lang = props.lang.clone();
+    let alerts_clone = alerts.clone();
     let share_theme_onclick = Callback::from(move |_| {
-        log!("share link copied to clipboard!");
         let colors = generated_theme_clone.to_vec().iter().map(|x| format!("{}", &x[1..=x.len() - 1])).collect::<Vec<String>>();
         clipboard_clone.write_text(format!("https://windows-terminal-theme-generator.netlify.app/{}/generate/{}", lang, colors.join("-")));
+        alerts_clone.set(Alert::new(AlertMode::Info, 5, "Link Copied with Success".to_string()));
     });
     
     let data: UseStateHandle<Data> = use_state(|| Data::default());
@@ -163,23 +152,24 @@ pub fn generator(props: &GenProps) -> Html {
         _ => &data.en,
     };
 
-    let button_info: Vec<(&str, &str, &str, Callback<()>)> = vec![
-        ("/svg/random.svg", "50%", &data_filtered.random, randomize_theme_onclick.clone()),
-        ("/svg/previous.svg", "50%", &data_filtered.previous, previous_theme_onclick.clone()),
-        ("/svg/next.svg", "50%", &data_filtered.next, next_theme_onclick.clone()),
-        ("/svg/moon.svg", "50%", &data_filtered.modes, mode_theme_onclick.clone()),
-        ("/svg/copy.svg", "50%", &data_filtered.copy, copy_theme_onclick.clone()),
-        ("/svg/share.svg", "50%", &data_filtered.share, share_theme_onclick.clone())
+    let button_info: Vec<(Icons, &str, &str, Callback<()>)> = vec![
+        (Icons::Random, "50%", &data_filtered.random, randomize_theme_onclick.clone()),
+        (Icons::Previous, "50%", &data_filtered.previous, previous_theme_onclick.clone()),
+        (Icons::Next, "50%", &data_filtered.next, next_theme_onclick.clone()),
+        (Icons::Theme, "50%", &data_filtered.modes, mode_theme_onclick.clone()),
+        (Icons::Copy, "50%", &data_filtered.copy, copy_theme_onclick.clone()),
+        (Icons::Share, "50%", &data_filtered.share, share_theme_onclick.clone())
     ];
     
     let button_props: Vec<Button> = button_info.into_iter().map(|(icon, percent, label, action)| {
-        Button::new(icon.to_string(), percent.to_string(), label.to_string(), action)
+        Button::new(icon, percent.to_string(), label.to_string(), action)
     }).collect();
     
     html! {
         <main class={classes!("generator")}>
             <Global css={generated_theme.get_css_vars()} />
             <ColoredTextHeader value={"Windows ,Terminal ,Theme ,Generator".to_string()} class={"".to_string()} />
+            {alerts.clone().create()}
             <section class={classes!("wt_official_example")}>
                 <article>
                     <WindowsTerminalText />

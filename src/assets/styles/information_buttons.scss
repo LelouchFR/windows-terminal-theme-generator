@@ -1,0 +1,36 @@
+div.alert {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+
+    figure {
+        display: flex;
+
+        figcaption {
+            font-family: $nl-font;
+            padding: 0px 10px;
+            align-self: center;
+        }
+    }
+}
+
+@keyframes alert_show {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+@for $i from 1 through 10 {
+    div.alert.time-#{$i}s {
+        animation: alert_show #{$i}s;
+        animation-fill-mode: forwards;
+    }
+}   
