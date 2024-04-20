@@ -39,7 +39,7 @@ pub struct Data {
 
 #[derive(Properties, PartialEq)]
 pub struct HomeProps {
-    pub lang: String,
+    pub lang: Language,
 }
 
 #[allow(unused_variables)]
@@ -62,28 +62,15 @@ pub fn home_page(props: &HomeProps) -> Html {
         });
     }
 
-    let data_filtered = match props.lang.as_str() {
-        "en" => &data.en,
-        "fr" => &data.fr,
-        "de" => &data.de,
-        "sp" => &data.sp,
-        "hi" => &data.hi,
-        "kr" => &data.kr,
-        "jp" => &data.jp,
-        "ru" => &data.ru,
-        _ => &data.en,
-    };
-
-    let language = match props.lang.as_str() {
-        "en" => Language::En,
-        "fr" => Language::Fr,
-        "de" => Language::De,
-        "sp" => Language::Sp,
-        "hi" => Language::Hi,
-        "kr" => Language::Kr,
-        "jp" => Language::Jp,
-        "ru" => Language::Ru,
-        _ => Language::En,
+    let data_filtered = match props.lang {
+        Language::En => &data.en,
+        Language::Fr => &data.fr,
+        Language::De => &data.de,
+        Language::Sp => &data.sp,
+        Language::Hi => &data.hi,
+        Language::Kr => &data.kr,
+        Language::Jp => &data.jp,
+        Language::Ru => &data.ru,
     };
     
     html! {
@@ -99,7 +86,7 @@ pub fn home_page(props: &HomeProps) -> Html {
                         }
                     </figure>
                     <button>
-                        <Link<Route> to={Route::GeneratorLang{lang: language}}>{&data_filtered.button_text}</Link<Route>>
+                        <Link<Route> to={Route::GeneratorLang{lang: props.lang.clone()}}>{&data_filtered.button_text}</Link<Route>>
                     </button>
                 </section>
                 <section class={classes!("qa")}>

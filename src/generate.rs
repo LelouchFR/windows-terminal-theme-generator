@@ -18,7 +18,8 @@ use crate::{
         generate_theme,
         gen_theme_from_link,
         color_classes
-    }
+    },
+    router::Language
 };
 
 #[derive(Clone, PartialEq, Deserialize, Default)]
@@ -45,7 +46,7 @@ pub struct Data {
 
 #[derive(Properties, PartialEq)]
 pub struct GenProps {
-    pub lang: String,
+    pub lang: Language,
     #[prop_or_default]
     pub colors: String,
 }
@@ -140,16 +141,15 @@ pub fn generator(props: &GenProps) -> Html {
         });
     }
 
-    let data_filtered = match props.lang.as_str() {
-        "en" => &data.en,
-        "fr" => &data.fr,
-        "de" => &data.de,
-        "sp" => &data.sp,
-        "hi" => &data.hi,
-        "kr" => &data.kr,
-        "jp" => &data.jp,
-        "ru" => &data.ru,
-        _ => &data.en,
+    let data_filtered = match props.lang {
+        Language::En => &data.en,
+        Language::Fr => &data.fr,
+        Language::De => &data.de,
+        Language::Sp => &data.sp,
+        Language::Hi => &data.hi,
+        Language::Kr => &data.kr,
+        Language::Jp => &data.jp,
+        Language::Ru => &data.ru,
     };
 
     let button_info: Vec<(Icons, &str, &str, Callback<()>)> = vec![

@@ -48,15 +48,33 @@ pub enum Route {
 
 pub fn switch(route: Route) -> Html {
     match route {
-        Route::HomeLang { lang } => html! {<Home lang={lang.to_string()} />},
-        Route::Home => html! {<Home lang={Language::En.to_string()} />},
-        Route::GeneratorLang { lang } => html! {<Generator lang={lang.to_string()} />},
-        Route::Generator => html! {<Generator lang={Language::En.to_string()} />},
-        Route::GeneratorLangWithColors { lang, colors } => html! {<Generator lang={lang.to_string()} colors={colors} />},
-        Route::GeneratorWithColors { colors } => html! {<Generator lang={Language::En.to_string()} colors={colors} />},
-        Route::ReleaseLang { lang } => html! {<h1>{"V 1.0 in "}{lang.to_string()}</h1>},
-        Route::Release => html! {<h1>{"V 1.0 in "}{Language::En.to_string()}</h1>},
-        Route::NotFound => html! { <h1>{ "404: Page not found" }</h1> },
+        Route::HomeLang { lang } => html! {
+            <Home lang={lang} />
+        },
+        Route::Home => html! {
+            <Home lang={Language::En} />
+        },
+        Route::GeneratorLang { lang } => html! {
+            <Generator lang={lang} />
+        },
+        Route::Generator => html! {
+            <Generator lang={Language::En} />
+        },
+        Route::GeneratorLangWithColors { lang, colors } => html! {
+            <Generator lang={lang} colors={colors} />
+        },
+        Route::GeneratorWithColors { colors } => html! {
+            <Generator lang={Language::En} colors={colors} />
+        },
+        Route::ReleaseLang { lang } => html! {
+            <h1>{"V 1.0 in "}{lang}</h1>
+        },
+        Route::Release => html! {
+            <h1>{"V 1.0 in "}{Language::En}</h1>
+        },
+        Route::NotFound => html! {
+            <h1>{"404: Page not found"}</h1>
+        },
     }
 }
 

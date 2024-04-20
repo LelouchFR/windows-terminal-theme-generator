@@ -10,25 +10,13 @@ use crate::{
 
 #[derive(Properties, PartialEq)]
 pub struct FooterProps {
-    pub lang: String,
+    pub lang: Language,
 }
 
 #[function_component(Footer)]
 pub fn footer(props: &FooterProps) -> Html {
     let repository_link: String = "https://github.com/LelouchFR/windows-terminal-theme-generator".to_string();
     let random_hover_color: UseStateHandle<String> = use_state(|| get_random_color_on_hover());
-
-    let language = match props.lang.as_str() {
-        "en" => Language::En,
-        "fr" => Language::Fr,
-        "de" => Language::De,
-        "sp" => Language::Sp,
-        "hi" => Language::Hi,
-        "kr" => Language::Kr,
-        "jp" => Language::Jp,
-        "ru" => Language::Ru,
-        _ => Language::En,
-    };
 
     let on_mouse_hover =  {
         let random_hover_color = random_hover_color.clone();
@@ -87,9 +75,9 @@ pub fn footer(props: &FooterProps) -> Html {
                 <section>
                     <h3>{"Routes"}</h3>
                     <ul>
-                        <li><Link<Route> to={Route::HomeLang{lang: language.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Home"}</span></Link<Route>></li>
-                        <li><Link<Route> to={Route::GeneratorLang{lang: language.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Generate"}</span></Link<Route>></li>
-                        <li><Link<Route> to={Route::ReleaseLang{lang: language.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Releases"}</span></Link<Route>></li>
+                        <li><Link<Route> to={Route::HomeLang{lang: props.lang.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Home"}</span></Link<Route>></li>
+                        <li><Link<Route> to={Route::GeneratorLang{lang: props.lang.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Generate"}</span></Link<Route>></li>
+                        <li><Link<Route> to={Route::ReleaseLang{lang: props.lang.clone()}}><span onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)}>{"Releases"}</span></Link<Route>></li>
                         <li><a onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)} href={"/sitemap.xml"}>{"Sitemap"}</a></li>
                         <li><a onmouseover={on_mouse_hover.clone()} class={classes!(&*random_hover_color)} href={"/robots.txt"}>{"Robot file"}</a></li>
                     </ul>
