@@ -54,6 +54,8 @@ You can import your own themes into the website to watch if the colors match oth
     ```
 3. Run `cargo install --locked trunk` if trunk isn't installed.
 4. Run `rustup target add wasm32-unknown-unknown` if WebAssembly target isnt installed.
+> [!TIP]
+> You can use `make requirements` instead of `3.` and `4.` to be faster.
 5. Run `trunk serve` to build & serve the application to [localhost:5173](http://127.0.0.1:5173/).
 
 ## Contributing

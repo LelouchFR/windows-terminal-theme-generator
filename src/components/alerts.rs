@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use crate::components::icons::{Icon, Icons};
+use yew::prelude::*;
 
 #[derive(Default)]
 pub enum AlertMode {
@@ -8,7 +8,7 @@ pub enum AlertMode {
     Validation,
     Info,
     #[default]
-    None
+    None,
 }
 
 pub struct AlertItems {
@@ -26,7 +26,9 @@ pub struct Alert {
 impl Alert {
     pub fn new(mode: AlertMode, time_duration: u8, text: String) -> Self {
         Alert {
-            mode, time_duration, text
+            mode,
+            time_duration,
+            text,
         }
     }
 
@@ -34,23 +36,23 @@ impl Alert {
         let items: AlertItems = match self.mode {
             AlertMode::Warning => AlertItems {
                 color: "yellow--as-background".to_string(),
-                icon: Icon::new(Icons::Warning).icon
+                icon: Icon::new(Icons::Warning).icon,
             },
             AlertMode::Error => AlertItems {
                 color: "red--as-background".to_string(),
-                icon: Icon::new(Icons::Error).icon
+                icon: Icon::new(Icons::Error).icon,
             },
             AlertMode::Validation => AlertItems {
                 color: "green--as-background".to_string(),
-                icon: Icon::new(Icons::Validation).icon 
+                icon: Icon::new(Icons::Validation).icon,
             },
             AlertMode::Info => AlertItems {
                 color: "blue--as-background".to_string(),
-                icon: Icon::new(Icons::Info).icon
+                icon: Icon::new(Icons::Info).icon,
             },
             AlertMode::None => AlertItems {
                 color: "".to_string(),
-                icon: "".to_string()
+                icon: "".to_string(),
             },
         };
 

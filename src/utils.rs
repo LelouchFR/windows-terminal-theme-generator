@@ -1,39 +1,49 @@
-use yew::prelude::*;
+use crate::colors::colors::{ToHSL, WindowsTerminalTheme, HSL};
 use rand::prelude::*;
-use crate::colors::colors::{HSL, WindowsTerminalTheme, ToHSL};
+use yew::prelude::*;
 
 pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
     let mut rng = rand::thread_rng(); // generates a random number generator to get a number from 0 to 1
     
     let lightnesses: Vec<f64> = vec![
         rng.gen::<f64>() * 30.0 + 20.0,
-        rng.gen::<f64>() * 30.0 + 50.0
+        rng.gen::<f64>() * 30.0 + 50.0,
     ];
     
     // (initial color is going to be a shade of black and the brightBlack)
-    let mut colors: Vec<(String, String)> = vec![
-        (
-            HSL::new(0.0, 0.0, rng.gen::<f64>() * 10.0).to_hex(),
-            HSL::new(0.0, 0.0, rng.gen::<f64>() * 35.0 + 10.0).to_hex()
-        )
-    ];
+    let mut colors: Vec<(String, String)> = vec![(
+        HSL::new(0.0, 0.0, rng.gen::<f64>() * 10.0).to_hex(),
+        HSL::new(0.0, 0.0, rng.gen::<f64>() * 35.0 + 10.0).to_hex(),
+    )];
     
     for i in 1..=6 {
-        colors.push(
-            (
-                HSL::new(rng.gen::<f64>() * ((360.0 / 6.0) * i as f64) + 15.0, 100.0, lightnesses[0]).to_hex(),
-                HSL::new(rng.gen::<f64>() * ((360.0 / 6.0) * i as f64) + 15.0, 100.0, lightnesses[1]).to_hex()
+        colors.push((
+            HSL::new(
+                rng.gen::<f64>() * ((360.0 / 6.0) * i as f64) + 15.0,
+                100.0,
+                lightnesses[0],
             )
-        );
+            .to_hex(),
+            HSL::new(
+                rng.gen::<f64>() * ((360.0 / 6.0) * i as f64) + 15.0,
+                100.0,
+                lightnesses[1],
+            )
+            .to_hex(),
+        ));
     }
     
-    colors.push(
-        (HSL::new(0.0, 0.0, 100.0).to_hex(), HSL::new(0.0, 0.0, 95.0).to_hex())
-    );
+    colors.push((
+        HSL::new(0.0, 0.0, 100.0).to_hex(),
+        HSL::new(0.0, 0.0, 95.0).to_hex(),
+    ));
 
     // 16 colors (8 pairs of normal colors and bright colors)
     let indexes_of_sorted_colors: Vec<usize> = vec![0, 6, 2, 1, 4, 5, 3, 7];
-    let sorted_colors: Vec<(String, String)> =  indexes_of_sorted_colors.iter().map(|&i| colors[i].clone()).collect();
+    let sorted_colors: Vec<(String, String)> = indexes_of_sorted_colors
+        .iter()
+        .map(|&i| colors[i].clone())
+        .collect();
 
     // 1 theme name
     let theme_name: String = "Rust Generated Theme".to_string();
@@ -43,7 +53,7 @@ pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
         HSL::new(0.0, 0.0, 100.0),
         HSL::new(0.0, 0.0, 10.0),
         HSL::new(0.0, 0.0, 95.0),
-        HSL::new(0.0, 0.0, 95.0)
+        HSL::new(0.0, 0.0, 95.0),
     ];
 
     let mut new_generated_theme = vec![];
@@ -59,6 +69,7 @@ pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
     }
     
     let impl_new_theme: WindowsTerminalTheme = match is_white_mode {
+        #[rustfmt::skip]
         true => WindowsTerminalTheme::new(
             new_generated_theme[0].clone().to_hsl().unwrap().to_negative().to_hex(),
             new_generated_theme[1].clone().to_hsl().unwrap().to_negative().to_hex(),
@@ -103,7 +114,7 @@ pub fn generate_theme(is_white_mode: bool) -> WindowsTerminalTheme {
             new_generated_theme[17].clone(),
             new_generated_theme[18].clone(),
             new_generated_theme[19].clone(),
-            new_generated_theme[20].clone()
+            new_generated_theme[20].clone(),
         ),
     };
     
@@ -134,12 +145,12 @@ pub fn gen_theme_from_link(colors: String) -> WindowsTerminalTheme {
         colors[19].clone(),
         colors[16].clone(),
         colors[17].clone(),
-        colors[18].clone() 
+        colors[18].clone(),
     )
 }
 
 #[allow(non_upper_case_globals)]
-pub const color_classes: [&str;20] = [
+pub const color_classes: [&str; 20] = [
     "black",
     "bright-black",
     "red",
@@ -159,7 +170,7 @@ pub const color_classes: [&str;20] = [
     "background",
     "foreground",
     "selection-background",
-    "cursor-color"
+    "cursor-color",
 ];
 
 #[derive(Properties, PartialEq)]
@@ -170,7 +181,6 @@ pub struct ColoredTextHeaderProps {
 
 #[function_component(ColoredTextHeader)]
 pub fn colored_text_header(props: &ColoredTextHeaderProps) -> Html {
-
     html! {
         <h1 class={classes!(&props.class)}>
             {

@@ -1,5 +1,5 @@
+use crate::components::icons::{Icon, Icons};
 use yew::prelude::*;
-use crate::components::icons::{Icons, Icon};
 
 #[derive(Debug, Clone)]
 pub struct Button {
@@ -15,7 +15,7 @@ impl Button {
             src: Icon::new(src).icon,
             width,
             alt,
-            onclick
+            onclick,
         }
     }
 

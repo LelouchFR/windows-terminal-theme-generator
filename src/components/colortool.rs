@@ -1,33 +1,50 @@
-use yew::prelude::*;
 use crate::utils::make_chars;
+use yew::prelude::*;
 
-fn mapped_text(background_colors: Vec<String>, foreground_colors: Vec<String>, text: &str, vertical_text: Vec<String>) -> Html {
-    foreground_colors.iter().enumerate().map(|(i, fg_color)| {
-        let v_text = if i % 2 == 0 {
-            format!("{}{}", vertical_text[i % 8].clone(), make_chars(' ', 5))
-        } else {
-            format!("1;{}{}", vertical_text[(i - 1) % 8].clone(), make_chars(' ', 3))
-        };
+fn mapped_text(
+    background_colors: Vec<String>,
+    foreground_colors: Vec<String>,
+    text: &str,
+    vertical_text: Vec<String>,
+) -> Html {
+    foreground_colors
+        .iter()
+        .enumerate()
+        .map(|(i, fg_color)| {
+            let v_text = if i % 2 == 0 {
+                format!(
+                    "{}{}",
+                    vertical_text[i % 8].clone(),
+                    make_chars(' ', 5)
+                )
+            } else {
+                format!(
+                    "1;{}{}",
+                    vertical_text[(i - 1) % 8].clone(),
+                    make_chars(' ', 3)
+                )
+            };
         
-        html! {
-            <>
-                {v_text}
-                {
-                    background_colors.iter().map(|bg_color| {
-                        html! {
-                            <>
-                                <span class={classes!(bg_color, fg_color)}>
-                                    {format!("  {}  ", text)}
-                                </span>
-                                <span>{" "}</span>
-                            </>
-                        }
-                    }).collect::<Html>()
-                }
-                <br />
-            </>
-        }
-    }).collect::<Html>()
+            html! {
+                <>
+                    <span class={classes!("white")}>{v_text}</span>
+                    {
+                        background_colors.iter().map(|bg_color| {
+                            html! {
+                                <>
+                                    <span class={classes!(bg_color, fg_color)}>
+                                        {format!("  {}  ", text)}
+                                    </span>
+                                    <span>{" "}</span>
+                                </>
+                            }
+                        }).collect::<Html>()
+                    }
+                    <br />
+                </>
+            }
+        })
+        .collect::<Html>()
 }
 
 #[function_component(ColorTool)]
@@ -48,18 +65,11 @@ pub fn color_tool() -> Html {
         "cyan",
         "bright-cyan",
         "white",
-        "bright-white"
+        "bright-white",
     ];
 
     let back_color_classes: Vec<&str> = vec![
-        "black",
-        "red",
-        "green",
-        "yellow",
-        "blue",
-        "purple",
-        "cyan",
-        "white",
+        "black", "red", "green", "yellow", "blue", "purple", "cyan", "white",
     ];
 
     let background_color_classes: Vec<String> = back_color_classes
@@ -72,7 +82,7 @@ pub fn color_tool() -> Html {
     let text: &str = "gYw";
 
     let header: Html = html! {
-        <>
+        <p class={classes!(color_classes[14])}>
             {(0..=9).map(|_| " ").collect::<String>()}
             {
                 horizontal_text
@@ -81,7 +91,7 @@ pub fn color_tool() -> Html {
                     .collect::<String>()
             }
             <br />
-        </>
+        </p>
     };
     
     html! {

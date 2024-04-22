@@ -1,5 +1,5 @@
+use serde::{Deserialize, Serialize};
 use stylist::{css, StyleSource};
-use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct WindowsTerminalTheme {
@@ -37,7 +37,29 @@ pub struct WindowsTerminalTheme {
 }
 
 impl WindowsTerminalTheme {
-    pub fn new(black: String, bright_black: String, red: String, bright_red: String, green: String, bright_green: String, yellow: String, bright_yellow: String, blue: String, bright_blue: String, purple: String, bright_purple: String, cyan: String, bright_cyan: String, white: String, bright_white: String, name: String, cursor_color: String, background: String, foreground: String, selection_background: String) -> WindowsTerminalTheme {
+    pub fn new(
+        black: String,
+        bright_black: String,
+        red: String,
+        bright_red: String,
+        green: String,
+        bright_green: String,
+        yellow: String,
+        bright_yellow: String,
+        blue: String,
+        bright_blue: String,
+        purple: String,
+        bright_purple: String,
+        cyan: String,
+        bright_cyan: String,
+        white: String,
+        bright_white: String,
+        name: String,
+        cursor_color: String,
+        background: String,
+        foreground: String,
+        selection_background: String,
+    ) -> WindowsTerminalTheme {
         WindowsTerminalTheme {
             black,
             bright_black,
@@ -161,7 +183,7 @@ impl HSL {
     pub fn get_adjacent(&self, phi: f64) -> Vec<HSL> {
         let hue_1: HSL = HSL::new(self.hue + phi, self.saturation, self.lightness);
         let hue_2: HSL = HSL::new(self.hue - phi, self.saturation, self.lightness);
-        
+
         vec![hue_1, hue_2]
     }
 
@@ -190,7 +212,11 @@ impl HSL {
     }
 
     pub fn to_rgb(&self) -> RGB {
-        let (hue, saturation, lightness) = (self.hue / 360.0, self.saturation / 100.0, self.lightness / 100.0);
+        let (hue, saturation, lightness) = (
+            self.hue / 360.0,
+            self.saturation / 100.0,
+            self.lightness / 100.0,
+        );
 
         let q = match lightness < 0.5 {
             true => lightness * (1.0 + saturation),
@@ -225,7 +251,11 @@ impl RGB {
     }
 
     pub fn get_complementary(&self) -> RGB {
-        RGB::new(255.0 - self.red as f64, 255.0 - self.green as f64, 255.0 - self.blue as f64)
+        RGB::new(
+            255.0 - self.red as f64,
+            255.0 - self.green as f64,
+            255.0 - self.blue as f64,
+        )
     }
 
     pub fn to_hex(&self) -> String {
@@ -233,7 +263,11 @@ impl RGB {
     }
 
     pub fn to_hsl(&self) -> HSL {
-        let (red, green, blue) = (self.red as f64 / 255.0, self.green as f64 / 255.0, self.blue as f64 / 255.0);
+        let (red, green, blue) = (
+            self.red as f64 / 255.0,
+            self.green as f64 / 255.0,
+            self.blue as f64 / 255.0,
+        );
 
         let min_value = red.min(green).min(blue);
         let max_value = red.max(green).max(blue);

@@ -1,8 +1,8 @@
-mod home_page;
-mod generate;
-mod router;
-mod components;
 mod colors;
+mod components;
+mod generate;
+mod home_page;
+mod router;
 mod utils;
 
 fn main() {

@@ -1,16 +1,11 @@
-use yew::prelude::*;
 use crate::{
     components::{
-        ascii_browsers::{
-            AsciiBrowser,
-            Browsers,
-            Charset,
-            ThemeMode
-        },
-        colortool::ColorTool
+        ascii_browsers::{AsciiBrowser, Browsers, Charset, ThemeMode},
+        colortool::ColorTool,
     },
-    router::Language
+    router::Language,
 };
+use yew::prelude::*;
 
 #[derive(Debug, PartialEq, Clone)]
 pub enum ToolComponent {
@@ -28,7 +23,8 @@ pub struct ToolWrapperProps {
 pub fn tool_wrapper(props: &ToolWrapperProps) -> Html {
     let tools: UseStateHandle<Vec<Html>> = use_state(|| {
         let mut initial_tools = Vec::new();
-
+        // TODO: Should only show one component, then posibility to choose which one to display
+        // through buttons
         for component in &props.components {
             let used_tool = match component {
                 ToolComponent::BrowserFetch => html! {
@@ -41,7 +37,7 @@ pub fn tool_wrapper(props: &ToolWrapperProps) -> Html {
                         user_language={props.lang.clone()}
                     />
                 },
-                ToolComponent::ColorTool => html!{<ColorTool />},
+                ToolComponent::ColorTool => html! {<ColorTool />},
             };
 
             initial_tools.push(used_tool);
@@ -51,7 +47,7 @@ pub fn tool_wrapper(props: &ToolWrapperProps) -> Html {
     });
 
     html! {
-        <section class={classes!("bright-black--as-background")}>
+        <section class={classes!("background")}>
             <button>{"WebFetch"}</button>
             <button>{"ColorTool"}</button>
             {(*tools).clone()}

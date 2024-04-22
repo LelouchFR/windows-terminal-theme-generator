@@ -9,7 +9,7 @@ pub enum Icons {
     Warning,
     Error,
     Validation,
-    Info
+    Info,
 }
 
 #[derive(Debug, Clone)]
@@ -31,7 +31,7 @@ impl Icon {
                 Icons::Error => "/svg/error.svg".to_string(),
                 Icons::Validation => "/svg/validation.svg".to_string(),
                 Icons::Info => "/svg/info.svg".to_string(),
-            }
+            },
         }
     }
 }

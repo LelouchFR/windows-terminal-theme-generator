@@ -12,7 +12,7 @@ For the link, it takes all the colors in a way to display them correctly, the wa
 
 `https://windows-terminal-theme-generator.netlify.app/{lang}/generate/{black}-{bright_black}-{red}-{bright_red}-{green}-{bright_green}-{yellow}-{bright_yellow}-{blue}-{bright_blue}-{purple}-{bright_purple}-{cyan}-{bright_cyan}-{white}-{bright_white}-{background}-{foreground}-{selection_background}-{cursor_color}`
 
-so with that in mmin, here are example for links to get to a theme shared:
+so with that in mind, here are example for links to get to a theme shared:
 
 [Monokai](https://windows-terminal-theme-generator.netlify.app/en/generate/3E3D32-272822-F92672-F92672-A6E22E-A6E22E-FFE792-FD971F-03395C-66D9EF-AE81FF-AE81FF-66D9EF-66D9EF-F8F8F2-F8F8F2-272822-F8F8F2-F8F8F2-F8F8F2)
 

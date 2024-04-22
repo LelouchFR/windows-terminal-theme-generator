@@ -1,15 +1,12 @@
-use yew::prelude::*;
-use yew_router::prelude::Link;
+use crate::{
+    components::footer::Footer,
+    router::{Language, Route},
+    utils::ColoredTextHeader,
+};
 use gloo_net::http::Request;
 use serde::Deserialize;
-use crate::{
-    router::{
-        Route,
-        Language
-    },
-    components::footer::Footer,
-    utils::ColoredTextHeader
-};
+use yew::prelude::*;
+use yew_router::prelude::Link;
 
 #[derive(Clone, PartialEq, Deserialize, Default)]
 pub struct QA {
@@ -51,10 +48,16 @@ pub fn home_page(props: &HomeProps) -> Html {
 
     {
         let data = data.clone();
-        use_effect_with((), move |_|  {
+        use_effect_with((), move |_| {
             let data = data.clone();
             wasm_bindgen_futures::spawn_local(async move {
-                let fetched_data: Data = Request::get("/json/home_page.json").send().await.unwrap().json().await.unwrap();
+                let fetched_data: Data = Request::get("/json/home_page.json")
+                    .send()
+                    .await
+                    .unwrap()
+                    .json()
+                    .await
+                    .unwrap();
                 data.set(fetched_data);
             });
 

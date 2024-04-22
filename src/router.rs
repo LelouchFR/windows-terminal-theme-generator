@@ -1,8 +1,8 @@
+use crate::generate::Generator;
+use crate::home_page::Home;
+use strum_macros::{Display, EnumString, VariantNames};
 use yew::prelude::*;
 use yew_router::prelude::*;
-use strum_macros::{EnumString, VariantNames, Display};
-use crate::home_page::Home;
-use crate::generate::Generator;
 
 #[derive(Debug, Clone, PartialEq, EnumString, VariantNames, Display)]
 #[strum(serialize_all = "lowercase")]

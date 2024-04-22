@@ -1,12 +1,9 @@
+use crate::{
+    router::{Language, Route},
+    utils::get_random_color_on_hover,
+};
 use yew::prelude::*;
 use yew_router::prelude::Link;
-use crate::{
-    router::{
-        Route,
-        Language
-    },
-    utils::get_random_color_on_hover
-};
 
 #[derive(Properties, PartialEq)]
 pub struct FooterProps {
@@ -15,10 +12,11 @@ pub struct FooterProps {
 
 #[function_component(Footer)]
 pub fn footer(props: &FooterProps) -> Html {
+    #[rustfmt::skip]
     let repository_link: String = "https://github.com/LelouchFR/windows-terminal-theme-generator".to_string();
     let random_hover_color: UseStateHandle<String> = use_state(|| get_random_color_on_hover());
 
-    let on_mouse_hover =  {
+    let on_mouse_hover = {
         let random_hover_color = random_hover_color.clone();
         move |_| random_hover_color.set(get_random_color_on_hover())
     };
